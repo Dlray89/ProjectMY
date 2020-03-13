@@ -39,14 +39,24 @@ Commit your code regularly and use descriptive messages. This helps both you (in
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your Team Lead.
 
 - [ ] Mention two parts of Express that you learned about this week.
+Express is a framwork for node.js, it handles routes, responses, and error messages.
+it is a routing and middleware framework
 
 - [ ] Describe Middleware?
+they are function that has access to request objects. there are 5 different types of middleware
+1. Appication level middleware
+2. router level middleware
+3. error handling middware
+4. built-in middleware
+5. thrid party middleware
 
 - [ ] Describe a Resource?
-
+Resources are things like product
 - [ ] What can the API return to help clients know if a request was successful?
+it returns any status within the 200 range. You got 200 for ok and 201 for success
 
 - [ ] How can we partition our application into sub-applications?
+
 
 ## Minimum Viable Product
 
