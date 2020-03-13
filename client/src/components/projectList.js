@@ -22,7 +22,7 @@ const ProjectList = props => {
     return(
         <div>
         <h2>Projects</h2>
-        <ProjectCard name={projects.name} />
+        <ProjectCard name={projects.name} description={projects.description} />
         
         </div>
     )
