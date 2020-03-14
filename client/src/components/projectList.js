@@ -1,31 +1,40 @@
-import React, { useState, useEffect } from "react";
-import ProjectCard from "./projectCard";
-import axios from "axios"
+import React from "react";
+import axios from "axios";
+import AddProject from "./AddProject"
 
-const ProjectList = props => {
 
-    const [projects, setProjects] = useState([])
+export default class ProjectList extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            projects:[]
+        };
+    }
 
-    useEffect(() => {
-       
+    componentDidMount(){
         axios
-        .get('http://localhost:5000/api/projects/1')
-        .then( res => {
-            console.log(res.data)
-            const projects = res.data;
-            setProjects(projects)
+        .get('http://localhost:5000/api/projects/')
+        .then(res => {
+            this.setState({
+                projects: res.data
+            })
         })
-        .catch(error => {
-            console.log("this is an error", error)
-        })
-    }, [])
-    return(
-        <div>
-        <h2>Projects</h2>
-        <ProjectCard name={projects.name} />
-        
-        </div>
-    )
+        .catch(error => console.log("something has happened", error))
+    }
+    render(){
+        return(
+            <div>
+                <h1>Current Projects</h1>
+                <div>
+                    {this.state.projects.map(project => (
+                        <div key={project.id}>
+                        {project.name} <br />
+                        {project.description}</div>
+                    ))}
+                </div>
+                <AddProject />
+            </div>
+        )
+    }
 }
 
-export default ProjectList

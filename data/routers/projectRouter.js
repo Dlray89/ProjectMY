@@ -4,6 +4,17 @@ const router = express.Router()
 
 const projectDB = require("../helpers/projectModel")
 
+router.get("/", (req,res) => {
+    projectDB
+    .get()
+    .then(projects => {
+        res.status(200).json(projects)
+    })
+    .catch(error => {
+        res.status(500).json({errorMessage: `${error} we could not grab the information your looking for`})
+    })
+})
+
 router.get("/:id", (req,res) => {
     const { id } = req.params
 projectDB
