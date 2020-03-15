@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { TextField } from "@material-ui/core"
 
 
 export default class addProject extends React.Component {
@@ -33,8 +34,8 @@ export default class addProject extends React.Component {
             <div>
                 <form onSubmit={this.submitHandler}>
                 <h2>Add projects</h2>
-                    <input placeholder="Projects Name" type="text" name="name" value={name} onChange={this.changeHandler} />
-                    <input placeholder="Description of project" type="text" name="description" value={description} onChange={this.changeHandler} />
+                    <TextField placeholder="Projects Name" type="text" name="name" value={name} onChange={this.changeHandler} />
+                    <TextField placeholder="Description of project" type="text" name="description" value={description} onChange={this.changeHandler} />
                     <button>Add Project</button>
                 </form>
             </div>
