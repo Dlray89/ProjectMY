@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 
 
+
+
 class ProjectForm extends React.Component {
     constructor(props){
         super(props)
@@ -34,9 +36,9 @@ class ProjectForm extends React.Component {
             <div>
                 <h1>Add new project</h1>
                 <form onSubmit={this.submitHandler}>
-                    <input placeholder="Name of the project" type="text" name="name" value={name} onChange={this.changeHandler} />
-                    <input placeholder="Description of the project" type="description" name="description" value={description} onChange={this.changeHandler} />
-                <button type="submit">Submit</button>
+                    <TextField placeholder="Name of the project" type="text" name="name" value={name} onChange={this.changeHandler} />
+                    <TextField placeholder="Description of the project" type="description" name="description" value={description} onChange={this.changeHandler} />
+                 <Button type="submit">Submit</Button>
                 </form>
             </div>
         )
