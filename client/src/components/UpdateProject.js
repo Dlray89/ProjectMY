@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { TextField, Button } from "@material-ui/core"
 
 
@@ -9,10 +8,13 @@ export default class addProject extends React.Component {
         super()
 
         this.state ={
+            projects: {
             id: '',
             name: '',
-            description:''
+            description:'',
+         
         }
+    }
     }
    
 
@@ -20,25 +22,22 @@ export default class addProject extends React.Component {
 
     changeHandler = e => {
         this.setState({
-            ...this.state,
-            [e.target.name] : e.target.value})
+            projects:{
+                ...this.state.projects,
+                [e.target.name]: e.target.value
+            }
+        })
     }
 
-    putHandler = (e , id, updateProject) => {
-        e.preventDefault();
-        axios.put(`http://localhost:5000/api/projects/${id}`, updateProject)
-        .then(res => {
-            console.log(res)
-        })
-        .catch( error => {
-            console.log(error)
-        })
+    putMessage = e => {
+        e.preventDefault()
+        this.props.putMessage(this.state.projects)
     }
 
  
 
     render(){
-        const {id, name, description} = this.state
+       
         
         return(
             <div>
@@ -46,13 +45,15 @@ export default class addProject extends React.Component {
            
             </div>
             
-                <form onSubmit={this.putHandler}>
+                <form onSubmit={this.putMessage}>
                 <h2>Update projects</h2>
-                <TextField placeholder="Projects id" type="text" name="id" value={id} onChange={this.changeHandler} />
-                    <TextField placeholder="Projects Name" type="text" name="name" value={name} onChange={this.changeHandler} />
+                <TextField placeholder="Projects id"  type="number" name="id" value={this.state.projects.id} onChange={this.changeHandler} />
+                    <TextField placeholder="Projects Name" type="text" name="name" value={this.state.projects.name} onChange={this.changeHandler} />
                     <br />
-                    <TextField placeholder="Description of project" type="text" name="description" value={description} onChange={this.changeHandler} />
+                    <TextField placeholder="Description of project" type="text" name="description" value={this.state.projects.description} onChange={this.changeHandler} />
+                   
                     <br />
+
                     <Button type="submit" variant="contained" >update Project</Button>
 
                     <Button type="reset" variant="contained">Reset</Button>

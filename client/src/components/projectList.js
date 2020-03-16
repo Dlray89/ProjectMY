@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import AddProject from "./AddProject";
+import Update from "./UpdateProject"
 import "./projectList.css"
 
 
@@ -25,38 +25,43 @@ export default class ProjectList extends React.Component {
         .catch(error => console.log("something has happened", error))
     }
 
-    updateHandler(){
-        const projectsUpdate = {
+    putMessage = projects => {
         
-            name: this.state.name,
-            description:this.state.description
-           
-        }
-
-        axios.put("http://localhost:5000/projects/{this.state.id}", projectsUpdate)
+        axios
+        .put(`http://localhost:5000/api/projects/${projects.id}`, projects)
         .then(res => {
-            console.log("State",res)
+            this.setState({
+                putSuccessMessage: res.data.SuccessMessage,
+                putError:''
+        })
+        
         })
         .catch(error => {
-            console.log(error)
-        })
+            this.setState({
+                putSuccessMessage:'',
+                putError: error
+            })
+        }) 
+        
     }
+
 
     render(){
         return(
             <div>
-             <AddProject />
+            
                 
                 <div className="projectcards">
                 <h1>Current Projects</h1>
                     {this.state.projects.map(project => (
-                        <div className="projects" key={project.id}>
+                        <div className="projects" key={project.id} >
                         <h3>Projects Name: <br />
                         {project.name}</h3> 
                         <br />
                         <p>Project Details: <br />
-                        {project.description}</p>
-                        <button onChange={this.updateHandler}>update</button>
+                        {project.description}
+                        {project.completed}</p>
+                       <Update putMessage={this.putMessage} putSuccessMessage={this.putSuccessMessage} put={this.state.putError} />
 
                         </div>
                     ))}
