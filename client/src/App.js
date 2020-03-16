@@ -1,15 +1,18 @@
-import React from 'react';
-import Projectlist from "./components/projectList";
-import './App.css';
+import React from "react"
+import { Switch, Route } from "react-router-dom"
+import WelcomePage from "./welcomePage"
 
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Projects</h1>
-      <Projectlist />
-    </div>
-  );
+function App(){
+return(
+  <>
+  <Switch>
+    <Route exact path="/" component={WelcomePage} />
+    <Route />
+  </Switch>
+
+  </>
+)
 }
 
-export default App;
+export default App

@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import AddProject from "./AddProject"
+import AddProject from "./AddProject";
+import "./projectList.css"
 
 
 export default class ProjectList extends React.Component {
@@ -10,6 +11,8 @@ export default class ProjectList extends React.Component {
             projects:[]
         };
     }
+
+    
 
     componentDidMount(){
         axios
@@ -21,18 +24,44 @@ export default class ProjectList extends React.Component {
         })
         .catch(error => console.log("something has happened", error))
     }
+
+    updateHandler(){
+        const projectsUpdate = {
+        
+            name: this.state.name,
+            description:this.state.description
+           
+        }
+
+        axios.put("http://localhost:5000/projects/{this.state.id}", projectsUpdate)
+        .then(res => {
+            console.log("State",res)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     render(){
         return(
             <div>
+             <AddProject />
+                
+                <div className="projectcards">
                 <h1>Current Projects</h1>
-                <div>
                     {this.state.projects.map(project => (
-                        <div key={project.id}>
-                        {project.name} <br />
-                        {project.description}</div>
+                        <div className="projects" key={project.id}>
+                        <h3>Projects Name: <br />
+                        {project.name}</h3> 
+                        <br />
+                        <p>Project Details: <br />
+                        {project.description}</p>
+                        <button onChange={this.updateHandler}>update</button>
+
+                        </div>
                     ))}
                 </div>
-                <AddProject />
+               
             </div>
         )
     }

@@ -9,24 +9,24 @@ export default class addProject extends React.Component {
         super()
 
         this.state ={
+            id: '',
             name: '',
             description:''
         }
     }
    
 
-    handleClick = e => {
-        e.preventDefault()
-        console.log("It works")
-    }
+    
 
     changeHandler = e => {
-        this.setState({[e.target.name] : e.target.value})
+        this.setState({
+            ...this.state,
+            [e.target.name] : e.target.value})
     }
 
-    submitHandler = e => {
+    putHandler = (e , id, updateProject) => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/projects', this.state)
+        axios.put(`http://localhost:5000/api/projects/${id}`, updateProject)
         .then(res => {
             console.log(res)
         })
@@ -35,12 +35,10 @@ export default class addProject extends React.Component {
         })
     }
 
-    
-
  
 
     render(){
-        const { name, description} = this.state
+        const {id, name, description} = this.state
         
         return(
             <div>
@@ -48,13 +46,14 @@ export default class addProject extends React.Component {
            
             </div>
             
-                <form onSubmit={this.submitHandler}>
-                <h2>Add projects</h2>
+                <form onSubmit={this.putHandler}>
+                <h2>Update projects</h2>
+                <TextField placeholder="Projects id" type="text" name="id" value={id} onChange={this.changeHandler} />
                     <TextField placeholder="Projects Name" type="text" name="name" value={name} onChange={this.changeHandler} />
                     <br />
                     <TextField placeholder="Description of project" type="text" name="description" value={description} onChange={this.changeHandler} />
                     <br />
-                    <Button type="submit" variant="contained">Add Project</Button>
+                    <Button type="submit" variant="contained" >update Project</Button>
 
                     <Button type="reset" variant="contained">Reset</Button>
                 </form>
