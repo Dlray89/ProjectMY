@@ -5,14 +5,11 @@ import { TextField, Button } from "@material-ui/core"
 
 
 export default class addProject extends React.Component {
-    constructor(){
-        super()
-
-        this.state ={
+   state ={
             name: '',
             description:''
         }
-    }
+    
    
 
     handleClick = e => {
@@ -21,13 +18,18 @@ export default class addProject extends React.Component {
     }
 
     changeHandler = e => {
-        this.setState({[e.target.name] : e.target.value})
+        this.setState({
+            [e.target.name] : e.target.value})
     }
 
     submitHandler = e => {
         e.preventDefault();
-        axios.post('http://localhost:5000/api/projects', this.state)
+        axios.post('http://localhost:4000/api/projects', this.state)
         .then(res => {
+            this.setState({
+                ...this.state.projects,
+                [res.data.id] : res.data
+            })
             console.log(res)
         })
         .catch( error => {

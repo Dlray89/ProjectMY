@@ -4,11 +4,13 @@ const morgan = require("morgan")
 const cors = require("cors")
 const session = require("express-session")
 
-
+//All Routers are here
 const actionRouter = require("./data/routers/actionRouter")
 const projectRouter = require("./data/routers/projectRouter")
 const usersRouter = require("./data/routers/userRouter")
 const authRouter = require("./data/auth/auth.router")
+
+
 const restricted = require("./data/auth/restricted-middlewear")
 
 const server = express()
@@ -33,7 +35,7 @@ server.use(cors())
 server.use(session(sessionConfig))
 server.use("/api/actions", actionRouter)
 server.use("/api/projects", projectRouter)
-server.use("/api/users", usersRouter)
+server.use("/api/users", restricted, usersRouter)
 server.use("/api/auth", authRouter)
 
 server.get('/', (req,res) => {
