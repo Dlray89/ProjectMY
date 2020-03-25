@@ -1,5 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom"
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import Navbar from "./loginNavBar"
+import { Card, CardContent, TextField } from "@material-ui/core"
+
 
 export default class Login extends React.Component {
   state = {
@@ -36,10 +40,22 @@ export default class Login extends React.Component {
     
     return (
       <div>
+  <Navbar />
+  <Card style={{width:"40%", margin: "10% auto", textAlign: "center"}}>
+  <h1>SIGNUP</h1>
+
+  <Link to="/register">Need a account? Sign-up here</Link>
+    <CardContent>
+
         <form onSubmit={this.login}>
           <div>
-            <input
-              placeholder="username"
+            <TextField
+            required
+            id="password"
+            label="username"
+            defaultValue="username"
+            variant="outlined"
+             
               type="text"
               name="username"
               value={this.state.credentials.username}
@@ -47,9 +63,14 @@ export default class Login extends React.Component {
             />
           </div>
           <div>
-            <input
-              placeholder="password"
-              type="text"
+            <TextField
+            required
+            id="password"
+            label="Password"
+            defaultValue="password"
+            variant="outlined"
+             
+              type="password"
               name="password"
               value={this.state.credentials.password}
               onChange={this.handlerChange}
@@ -57,6 +78,8 @@ export default class Login extends React.Component {
           </div>
           <button>Submit</button>
         </form>
+        </CardContent>
+  </Card>
       </div>
     );
   }
