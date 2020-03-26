@@ -1,0 +1,16 @@
+.projectcards{
+    
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+    
+    width: 100%;
+}
+
+.projects{
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 30%;
+    padding: 3%;
+    margin: 2% auto;
+}
