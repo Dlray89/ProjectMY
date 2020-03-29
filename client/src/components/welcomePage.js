@@ -26,8 +26,9 @@ const useStyles = makeStyles(theme => ({
         textAlign: "center"
     },
     PaperContent: {
+        background: "linear-gradient(to right, #d38312, #a83279)",
         border: 'solid 2px red',
-        padding: "3%",
+        padding: "1%",
         marginTop: "3%",
         display: "flex",
         justifyContent: "space-around",
