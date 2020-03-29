@@ -1,10 +1,29 @@
-.container{
-    background: url('../images/octavian-dan-b21Ty33CqVs-unsplash.jpg');
-    background-size: cover;
+.cardContainer{
+    padding: 5%;
+    background-image: url("https://e6847b7e-27ec-47f8-b900-31b7c857a889.ws-us02.gitpod.io/mini-browser/workspace/ProjectMY/client/src/images/octavian-dan-b21Ty33CqVs-unsplash.jpg");
     background-position: center;
-    width:100%;
-    height: 130%;
-    border:solid 2px #d76d77;
-    overflow: hidden;
-    padding: 2%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.intro{
+    margin-bottom: 5%;
+    text-decoration: underline;
+    text-decoration-color: red;
+}
+
+.pic{
+    border: solid 2px red;
+    height: 30vh;
+    width: 20%;
+    background-image: url("https://e6847b7e-27ec-47f8-b900-31b7c857a889.ws-us02.gitpod.io/mini-browser/workspace/ProjectMY/client/src/images/helloquence-5fNmWej4tAA-unsplash.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.introp{
+    border: solid 2px red;
+    width: 50%;
+    text-align: center;
 }
