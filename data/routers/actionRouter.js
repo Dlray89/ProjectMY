@@ -4,6 +4,17 @@ const router = express.Router()
 
 const actionDB = require("../helpers/actionModel");
 
+router.get("/", (req,res) => {
+    actionDB
+    .get()
+    .then(actions => {
+        res.status(200).json(actions)
+    })
+    .catch(error => {
+        res.status(500).json({errorMessage: `${error}: Couldn't find what your looking for`})
+    })
+})
+
 router.get("/:id", (req,res) => {
     const { id } = req.params
     actionDB

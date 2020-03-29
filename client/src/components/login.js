@@ -42,7 +42,7 @@ export default class Login extends React.Component {
       <div>
   <Navbar />
   <Card style={{width:"40%", margin: "10% auto", textAlign: "center"}}>
-  <h1>SIGNUP</h1>
+  <h1>SIGNIN</h1>
 
   <Link to="/register">Need a account? Sign-up here</Link>
     <CardContent>

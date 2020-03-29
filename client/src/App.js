@@ -6,6 +6,7 @@ import Dashboard from "./components/dashboard"
 import Login from "./components/login"
 import Register from "./components/register"
 import AddProject from "./components/AddProject"
+import Actions from "./components/actions"
 
 
 function App(){
@@ -17,6 +18,7 @@ return(
     <Route path="/register" component={Register} />
     <PrivateRoute exact path="/dashboard" component={Dashboard}/>
     <PrivateRoute exact path="/addProject" component={AddProject} />
+    <PrivateRoute exact path="/tasks" component={Actions} />
     <PrivateRoute path="/projects/:id" />
 <Redirect from="/login" to="/dashboard" />
   </Switch>

@@ -12,6 +12,6 @@ export const axiosWithAuth = () => {
         headers: {
             Authorization: token,
         },
-        baseURL: "http://localhost:4003"
+        baseURL: "http://localhost:7000"
     })
 }

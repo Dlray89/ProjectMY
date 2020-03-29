@@ -215,7 +215,7 @@ export default function PrimarySearchAppBar() {
       {renderMenu}
       <Breadcrumbs separator=">" aria-label="breadcrumb">
     <Link color="inherit" to="/addProject"> New Project</Link>
-    <Link color="inherit" href="/"> Tasks</Link>
+    <Link color="inherit" to="/tasks"> Tasks</Link>
     
       </Breadcrumbs>
       <Clock />

@@ -24,7 +24,7 @@ export default class addProject extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        axios.post('http://localhost:4000/api/projects', this.state)
+        axios.post('http://localhost:7000/api/projects', this.state)
         .then(res => {
             this.setState({
                 ...this.state.projects,

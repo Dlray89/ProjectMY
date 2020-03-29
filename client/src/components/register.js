@@ -44,7 +44,7 @@ export default class Register extends React.Component {
   <Card style={{width:"40%", margin: "10% auto", textAlign: "center"}}>
   <h1>SIGNUP</h1>
 
-  <Link to="login">Signin</Link>
+  <Link to="login">Already have an account? Sign-in here</Link>
     <CardContent>
 
         <form onSubmit={this.login}>

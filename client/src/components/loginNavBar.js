@@ -22,7 +22,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar style={{background: "linear-gradient(to bottom, #3a1c71, #d76d77, #ffaf7b)"}}  position="static">
         <Toolbar>
           
           <Typography variant="h6" className={classes.title} style={{textAlign: "center"}}>
